@@ -16,9 +16,10 @@ Things you may want to cover:
 * Secrets/environment variables: use `VISUAL="nano" bin/rails credentials:edit --environment development`
   It has username and password of database in use for postgresql
 
-* Database initialization
+* Database initialization: 
 
-* How to run the test suite
+* How to run the test suite: `rails test` 
+  Use this file direct path for our service: `rails test test/services/calculator_test.rb`
 
 * Services (job queues, cache servers, search engines, etc.)
 
