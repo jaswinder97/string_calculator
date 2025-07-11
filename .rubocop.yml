@@ -1,0 +1,21 @@
+require:
+  - rubocop-rails
+
+AllCops:
+  TargetRubyVersion: 3.2 # or your current version
+  NewCops: enable
+  Exclude:
+    - 'db/schema.rb'
+
+Layout/IndentationWidth:
+  EnforcedStyle: normal
+  Width: 2
+
+Layout/FirstArgumentIndentation:
+  EnforcedStyle: consistent
+
+Layout/FirstArrayElementIndentation:
+  EnforcedStyle: consistent
+
+Layout/FirstHashElementIndentation:
+  EnforcedStyle: consistent
