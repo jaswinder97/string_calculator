@@ -44,4 +44,10 @@ class CalculatorTest < ActiveSupport::TestCase
     end
     assert_equal 'negative numbers not allowed: -2,-5,-7', error.message
   end
+
+  test 'ignores numbers greater than 1000' do
+    assert_equal 2, @calculator.add("2,1001")
+    assert_equal 1002, @calculator.add("2,1000")  # 1000 should be included, 1001 ignored
+    assert_equal 3, @calculator.add("//;\n1;2;2000")  # with custom delimiter
+  end
 end
