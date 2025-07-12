@@ -45,7 +45,9 @@ class Calculator
 
   # Splits number string using the delimiter pattern and returns array of integers
   def extract_numbers(numbers_part, delimiter_pattern)
-    numbers_part.split(delimiter_pattern).map(&:to_i)
+    numbers_part.split(delimiter_pattern)
+                .map(&:to_i)
+                .reject { |n| n > 1000 }
   end
 
   # Raises exception if any negative numbers are found
