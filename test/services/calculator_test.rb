@@ -50,4 +50,15 @@ class CalculatorTest < ActiveSupport::TestCase
     assert_equal 1002, @calculator.add('2,1000') # 1000 should be included, 1001 ignored
     assert_equal 3, @calculator.add("//;\n1;2;2000") # with custom delimiter
   end
+
+  test 'sums only values <= 1000' do
+    assert_equal 2000, @calculator.add('1000,1000'), 'both 1000s included'
+    assert_equal 0, @calculator.add('1001,1002'), 'both numbers ignored'
+    assert_equal 1001, @calculator.add('1000,1,5000'), '5000 ignored'
+  end
+
+  test 'works with large numbers and custom multi-char delimiters' do
+    assert_equal 6, @calculator.add("//[***]\n1***2***3***1001"), '1001 ignored'
+    assert_equal 10, @calculator.add("//[***][%%]\n1***2%%3***4%%1005"), '1005 ignored'
+  end
 end
